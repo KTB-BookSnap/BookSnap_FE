@@ -17,7 +17,7 @@ export default function Card({ src, title, id }: ICard) {
       className="flex flex-col items-start gap-[10px] px-5 w-fit"
       onClick={() => router.push(`/card/${id}`)}
     >
-      <div className="relative w-[250px] h-[350px]">
+      <div className="relative w-[250px] h-[350px] drop-shadow-md">
         {src && <Image src={src} alt="썸네일" fill={true} objectFit="cover" />}
       </div>
       <div className="flex flex-row pl-[10px] items-start text-amber-950">{title}</div>
