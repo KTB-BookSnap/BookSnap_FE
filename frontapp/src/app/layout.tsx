@@ -15,12 +15,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="ko" className={`${kyoboHandwriting.variable}`}>
-      <body className="bg-amber-50">{children}</body>
+      <body className="bg-amber-50 font-kyobo-handwriting">
+        {children}
+        {modal}
+      </body>
     </html>
   );
 }
