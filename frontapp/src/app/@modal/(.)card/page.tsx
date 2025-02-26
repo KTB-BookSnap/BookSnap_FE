@@ -1,3 +1,10 @@
+import DimmedScreen from "@/components/DimmedScreen";
+
 export default function CardModalPage() {
-  return <div className="text-amber-950">card modal page</div>;
+  return (
+    <div className="flex">
+      <div className="flex z-10">card</div>
+      <DimmedScreen />
+    </div>
+  );
 }
