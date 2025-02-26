@@ -30,7 +30,7 @@ export default function prompt() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-[70%] h-[62px] p-[10px] text-xl border border-[#5D4037] rounded-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-[#5D4037] mt-3"
+              className="w-[70%] h-[62px] p-[10px] text-amber-950 text-xl border border-amber-950 rounded-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-amber-950 mt-3"
               required
             />
           </div>
@@ -41,7 +41,7 @@ export default function prompt() {
               내용
             </label>
             <textarea
-              className="w-[90%] h-[200px] px-3 py-2 border border-[#5D4037] rounded-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-[#5D4037] mt-3 "
+              className="w-[90%] h-[200px] px-3 py-2 text-amber-950 border border-amber-950 rounded-[12px] bg-white focus:outline-none focus:ring-2 focus:ring-amber-950 mt-3 "
               value={content}
               onChange={(e) => setContent(e.target.value)}
               rows={5}
