@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${kyoboHandwriting.variable}`}>
-      <body className="bg-amber-50">
+      <body className="bg-amber-50 font-kyobo-handwriting">
         {children}
         {modal}
       </body>
