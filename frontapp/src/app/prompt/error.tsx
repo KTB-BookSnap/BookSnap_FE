@@ -1,7 +1,5 @@
 "use client";
 
-export default function Error(){
-    return (
-        <div>Error</div>
-    );
+export default function Error() {
+  return <div className="">Error</div>;
 }
