@@ -1,7 +1,14 @@
+"use client";
+
 import Card from "@/components/Card";
 import Header from "@/components/header";
+import { useBooksQuery } from "@/hooks/api/useBooksQuery";
 
 export default function BookShelf() {
+  const { data, isLoading, error } = useBooksQuery();
+
+  console.log(data);
+
   return (
     <div className="flex flex-col gap-[20px]">
       <Header />
