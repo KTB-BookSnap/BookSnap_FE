@@ -1,14 +1,33 @@
 "use client";
+
 import Header from "@/components/header";
+import { useCardMutation } from "@/hooks/api/useCardMutation";
+import { useRouter } from "next/navigation";
 
 import { useState } from "react";
 
 export default function Home() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const router = useRouter();
+
+  const { mutate, isPending } = useCardMutation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    mutate(
+      { title, summary: content },
+      {
+        onSuccess: () => {
+          setTitle("");
+          setContent("");
+        },
+      }
+    );
+
+    router.push("bookshelf");
+
     console.log("제목:", title);
     console.log("내용:", content);
   };
@@ -23,9 +42,7 @@ export default function Home() {
         <form onSubmit={handleSubmit} className="w-[80%] space-y-4 mt-12">
           {/* 제목 입력 */}
           <div className="flex flex-col justify-start items-center">
-            <label className="text-[1.5rem] w-[68%] text-amber-950 font-bold mb-1">
-              제목
-            </label>
+            <label className="text-[1.5rem] w-[68%] text-amber-950 font-bold mb-1">제목</label>
             <input
               type="text"
               value={title}
@@ -55,7 +72,7 @@ export default function Home() {
               type="submit"
               className="w-[13%] bg-amber-950 text-white py-2 rounded-[12px] transition mt-5"
             >
-              제출
+              {isPending ? "처리 중..." : "제출"}
             </button>
           </div>
         </form>
