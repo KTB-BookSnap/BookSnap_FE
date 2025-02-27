@@ -20,8 +20,9 @@ export default function Card(data: any) {
   };
 
   useEffect(() => {
-    console.log(cardIndex);
+    console.log(data.data);
   }, [cardIndex]);
+
   return (
     <div className="flex flex-row items-center gap-5">
       <Image
@@ -36,12 +37,7 @@ export default function Card(data: any) {
       <div className="flex flex-col items-center width-[500px] gap-5">
         <div className="relative w-[250px] h-[350px] drop-shadow-md">
           {data.data[cardIndex]?.imageUrl ? (
-            <Image
-              src={data.data[cardIndex].imageUrl} // `?.` 사용 X (이미 존재 확인했음)
-              alt="썸네일"
-              fill={true}
-              style={{ objectFit: 'cover' }} // objectFit 사용 시 style 적용
-            />
+            <img src={decodeURIComponent(data.data[cardIndex].imageUrl)} style={{ width: '250px', height: '320px' }}></img>
           ) : (
             <p>로딩 중...</p>
           )}
