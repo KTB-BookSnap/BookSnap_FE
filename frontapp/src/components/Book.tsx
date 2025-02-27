@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-interface ICard {
+interface IBook {
   src: string;
   title: string;
   id: number;
 }
 
-export default function Card({ src, title, id }: ICard) {
+export default function Book({ src, title, id }: IBook) {
   const router = useRouter();
 
   return (
