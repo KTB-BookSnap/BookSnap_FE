@@ -1,7 +1,7 @@
 const END_POINT = {
   /* 카드 */
   card: "/card",
-  cardDetail: (id: number) => `/card/${id}`,
+  cardDetail: (id: number) => `/bookCards/${id}`,
   bookCards: "/bookCards",
 };
 

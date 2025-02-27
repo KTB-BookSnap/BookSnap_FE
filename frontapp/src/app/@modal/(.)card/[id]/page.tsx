@@ -5,10 +5,27 @@ import Image from "next/image";
 import CloseIcon from "@/icons/close.svg";
 import { useEffect } from "react";
 import Card from "@/components/Card";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import { useCardDetailQuery } from "@/hooks/api/useCardListQuery";
 
 export default function CardModalPage() {
+  const params = useParams();
   const router = useRouter();
+
+  const id = Number(params.id);
+
+  const { data, isLoading, error } = useCardDetailQuery(id);
+
+  useEffect(() => {
+    const id = Number(params.id);
+
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
+
+  console.log(data);
 
   const handleDimmedClick = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -19,12 +36,8 @@ export default function CardModalPage() {
     event.stopPropagation();
   };
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, []);
+  if (isLoading) return <p>로딩중</p>;
+  if (error) return <p>오류발생</p>;
 
   return (
     <div
@@ -43,7 +56,7 @@ export default function CardModalPage() {
           className="self-end"
           onClick={() => router.back()}
         />
-        <Card phrase="예시 텍스트입니다." />
+        <Card data={data} />
       </div>
       <DimmedScreen />
     </div>
