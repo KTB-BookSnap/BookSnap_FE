@@ -20,7 +20,7 @@ export default function Card(data: any) {
   };
 
   useEffect(() => {
-    console.log(data.data[cardIndex].imageUrl);
+    console.log('1:', data.data[cardIndex], '2:', data.data, '3:', data.data[cardIndex].imageUrl);
   }, [cardIndex]);
 
   const imgData = [
