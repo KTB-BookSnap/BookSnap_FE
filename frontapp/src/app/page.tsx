@@ -16,15 +16,10 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    mutate(
-      { title, summary: content },
-      {
-        onSuccess: () => {
-          setTitle("");
-          setContent("");
-        },
-      }
-    );
+    mutate({ title, summary: content });
+
+    console.log("제목:", title);
+    console.log("내용:", content);
 
     router.push("bookshelf");
   };

@@ -5,9 +5,11 @@ import BookSkeleton from "@/components/BookSkeleton";
 import Header from "@/components/header";
 import { useBooksQuery } from "@/hooks/api/useBooksQuery";
 import { IBook } from "@/types/api/books";
+import { useIsMutating } from "@tanstack/react-query";
 
 export default function BookShelf() {
   const { data, isLoading, error } = useBooksQuery();
+  const isMutating = useIsMutating({ mutationKey: ["createBook"] }) > 0;
 
   if (error) return <p>오류발생</p>;
 
@@ -23,9 +25,12 @@ export default function BookShelf() {
             <BookSkeleton />
           </>
         ) : (
-          data.map((book: IBook) => (
-            <Book key={book.bookId} src={book.thumbnailUrl} title={book.title} id={book.bookId} />
-          ))
+          <>
+            {data.map((book: IBook) => (
+              <Book key={book.bookId} src={book.thumbnailUrl} title={book.title} id={book.bookId} />
+            ))}
+            {isMutating && <BookSkeleton />}
+          </>
         )}
       </div>
     </div>
