@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { getBooks } from "@/api/book";
-import { IBooksResponse } from "@/types/api/books";
 
 export function useBooksQuery() {
   return useQuery({
