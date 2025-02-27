@@ -20,8 +20,15 @@ export default function Card(data: any) {
   };
 
   useEffect(() => {
-    console.log(data.data);
+    console.log(data.data[cardIndex].imageUrl);
   }, [cardIndex]);
+
+  const imgData = [
+    'https://s3-booksnap-test.s3.ap-northeast-2.amazonaws.com/prince_1.png',
+    'https://s3-booksnap-test.s3.ap-northeast-2.amazonaws.com/prince_2.png',
+    'https://s3-booksnap-test.s3.ap-northeast-2.amazonaws.com/prince_3.png',
+    'https://s3-booksnap-test.s3.ap-northeast-2.amazonaws.com/prince_4.png',
+  ];
 
   return (
     <div className="flex flex-row items-center gap-5">
@@ -36,11 +43,10 @@ export default function Card(data: any) {
       />
       <div className="flex flex-col items-center width-[500px] gap-5">
         <div className="relative w-[250px] h-[350px] drop-shadow-md">
-          {data.data[cardIndex]?.imageUrl ? (
+          {/* {data.data[cardIndex]?.imageUrl && (
             <img src={decodeURIComponent(data.data[cardIndex].imageUrl)} style={{ width: '250px', height: '320px' }}></img>
-          ) : (
-            <p>로딩 중...</p>
-          )}
+          )} */}
+          <img src={imgData[cardIndex]} style={{ width: '250px', height: '320px' }}></img>
         </div>
         <div className="text-amber-950">{data.data[cardIndex]?.phrase}</div>
       </div>
