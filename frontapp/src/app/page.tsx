@@ -27,9 +27,6 @@ export default function Home() {
     );
 
     router.push("bookshelf");
-
-    console.log("제목:", title);
-    console.log("내용:", content);
   };
 
   return (
