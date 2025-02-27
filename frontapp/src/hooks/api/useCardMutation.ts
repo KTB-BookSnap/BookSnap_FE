@@ -1,9 +1,10 @@
 import { postCard } from "@/api/card";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 export function useCardMutation() {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: ["createBook"],
@@ -12,6 +13,7 @@ export function useCardMutation() {
       return response.data;
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["books"] });
       router.refresh();
     },
   });
