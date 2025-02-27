@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import ReactQueryProvider from "@/hooks/useReactQueryProvider";
 
 const kyoboHandwriting = localFont({
   src: "../../public/fonts/KyoboHandwriting2019.otf",
@@ -23,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${kyoboHandwriting.variable}`}>
       <body className="bg-amber-50 font-kyobo-handwriting">
-        {children}
-        {modal}
+        <ReactQueryProvider>
+          {children}
+          {modal}
+        </ReactQueryProvider>
       </body>
     </html>
   );
