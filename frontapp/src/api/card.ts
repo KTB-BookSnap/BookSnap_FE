@@ -14,9 +14,16 @@ export const getCardById = async (id: number) => {
 };
 
 export const postCard = async (title: string, summary: string) => {
+  const cleanedSummary = summary
+    .replace(/\\/g, "")
+    .replace(/\n/g, " ")
+    .replace(/\r/g, "")
+    .replace(/\t/g, " ")
+    .replace(/\"/g, "'");
+
   const { data } = await axiosInstance.post(`${END_POINT.bookCards}`, {
     title,
-    summary,
+    summary: cleanedSummary,
   });
 
   return data;
