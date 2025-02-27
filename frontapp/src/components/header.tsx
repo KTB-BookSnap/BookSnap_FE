@@ -7,7 +7,7 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <div className="sticky top-0 w-full h-[80px] bg-amber-950  flex justify-start items-center px-5 gap-7">
+    <div className="sticky top-0 w-full h-[80px] bg-amber-950  flex justify-start items-center px-5 gap-7 z-10">
       <Link href="/" className="text-amber-50 text-[2.5rem]">
         📚 &nbsp;BookSnap
       </Link>
